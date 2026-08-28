@@ -224,6 +224,10 @@
       <li><a class="navlink" href="#aps">Calculate my APS</a></li>
       <li><a class="navlink" href="#prospectus">Prospectus</a></li>
       <li><a class="navlink" href="#verify">Verify a University</a></li>
+      <li><a class="navlink" href="closing-dates.html">Closing Dates</a></li>
+      <li><a class="navlink" href="#nsfas">NSFAS</a></li>
+      <li><a class="navlink" href="bursaries.html">Bursaries</a></li>
+      <li><a class="navlink" href="tvet.html">Looking into TVET colleges?</a></li>
       <li><a class="navlink" href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -280,6 +284,13 @@
     </div>
     <div class="uni-grid" id="private-grid"></div>
     <p class="disclaimer">This is not an endorsement — it's a starting list of well-known brands. Registration status can change, and a well-known name is not proof of registration. Always check the DHET register yourself.</p>
+
+    <div class="cao-banner" style="margin-top:24px;">
+      <div>
+        <strong>Looking into TVET colleges?</strong> Practical, hands-on training — a real alternative to university, not a backup. See what TVET is, how it works, and all 50 public colleges by province.
+      </div>
+      <a href="tvet.html">Explore TVET colleges →</a>
+    </div>
   </div>
 </section>
 
@@ -392,19 +403,55 @@
   </div>
 </section>
 
+<section id="nsfas">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Funding</span>
+      <h2>What is NSFAS?</h2>
+      <p>The National Student Financial Aid Scheme is the South African government's main funding scheme for students who can't afford university or TVET college on their own. If money is the thing standing between you and studying, this is where to start.</p>
+    </div>
+
+    <div class="verify-grid">
+      <div class="verify-card official">
+        <div class="verify-tag">Who qualifies</div>
+        <h3>The income threshold</h3>
+        <p>NSFAS funds South African citizens and permanent residents with a combined household income of R350,000 or less a year — rising to R600,000 for students living with a disability. SASSA grant recipients qualify automatically without a separate income check.</p>
+      </div>
+      <div class="verify-card">
+        <div class="verify-tag">What it covers</div>
+        <h3>Tuition and living costs</h3>
+        <p>Full tuition, plus allowances for accommodation, transport, meals, and books — paid directly to your bank account. It applies equally to public universities and public TVET colleges.</p>
+      </div>
+      <div class="verify-card">
+        <div class="verify-tag">Good to know</div>
+        <h3>Timing and staying funded</h3>
+        <p>Applications typically open around September for the following academic year and close in January — apply as early as you can, since documents (certified ID copies, proof of income) are the most common cause of delays. Funding covers your minimum study duration plus two extra years, so passing your subjects matters for staying funded.</p>
+      </div>
+    </div>
+
+    <div class="cao-banner" style="background:var(--navy);">
+      <div>
+        <strong>Apply directly through NSFAS</strong> — this isn't something any third party, including this site, can apply on your behalf for.
+      </div>
+      <a href="https://www.nsfas.org.za" target="_blank" rel="noopener">Go to nsfas.org.za →</a>
+    </div>
+    <p class="disclaimer">NSFAS funding is separate from applying to a university or TVET college — you need to do both. An NSFAS approval doesn't guarantee a study place, and a study place doesn't guarantee NSFAS funding.</p>
+  </div>
+</section>
+
 <section id="contact">
   <div class="wrap" style="text-align:center;">
     <div class="section-head" style="margin:0 auto;">
       <span class="eyebrow">Questions?</span>
       <h2>Use the chat bubble, bottom right.</h2>
-      <p>Ask me anything about a course, a deadline, or which route makes sense for you.</p>
+      <p>Ask me anything about a course, a deadline, or which route makes sense for you — I read every message.</p>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    Built by Tswelopele Boitumelo Mollo & Prof Nicholus Tumelo Mollo · The Next Step, South Africa · <span class="admin-link" id="admin-open">Admin</span>
+    Built by Tswelopele Boitumelo Mollo & Prof Nicholus Tumelo Mollo · UniUnlocked, South Africa · <span class="admin-link" id="admin-open">Admin</span>
   </div>
 </footer>
 
@@ -496,18 +543,18 @@ auth.signInAnonymously().catch(e=>console.error('Anonymous sign-in failed — ch
 /* ---------- University directory (Route 01) ---------- */
 const universities = [
   {name:"CAO (KZN Universities)", tag:"UKZN, DUT, MUT, UNIZULU — one form, one fee", url:"https://www.cao.ac.za"},
-  {name:"University of Cape Town", tag:"Applications via UCT online portal", url:"https://www.uct.ac.za/apply"},
-  {name:"University of the Witwatersrand", tag:"Wits Johannesburg online application", url:"https://www.wits.ac.za/study-at-wits/undergraduate-study/how-to-apply/"},
+  {name:"University of Cape Town", tag:"Applications via UCT online portal", url:"https://publicaccess.uct.ac.za/psc/public/EMPLOYEE/SA/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL?LP=UCT_ONLINE_APP_PUBLIC&"},
+  {name:"University of the Witwatersrand", tag:"Wits Johannesburg online application", url:"https://www.wits.ac.za/study-at-wits/"},
   {name:"Stellenbosch University", tag:"SU online application system", url:"https://www.sun.ac.za/english/apply"},
   {name:"University of Pretoria", tag:"UP online application", url:"https://www.up.ac.za/apply"},
-  {name:"University of Johannesburg", tag:"UJ Gauteng, multiple campuses", url:"https://www.uj.ac.za/apply/"},
-  {name:"University of the Free State", tag:"UFS — free application for SA students", url:"https://www.ufs.ac.za/apply"},
+  {name:"University of Johannesburg", tag:"UJ Gauteng, multiple campuses", url:"https://www.uj.ac.za/admissions-aid/"},
+  {name:"University of the Free State", tag:"UFS — free application for SA students", url:"https://apply.ufs.ac.za/Application/Start"},
   {name:"University of the Western Cape", tag:"UWC — no application fee for SA students", url:"https://www.uwc.ac.za/study/applications"},
-  {name:"Nelson Mandela University", tag:"NMU, Gqeberha (Eastern Cape)", url:"https://www.mandela.ac.za/Study-at-Mandela/Applications"},
-  {name:"Tshwane University of Technology", tag:"TUT — diplomas & applied degrees", url:"https://www.tut.ac.za/applications"},
+  {name:"Nelson Mandela University", tag:"NMU, Gqeberha (Eastern Cape)", url:"https://www.mandela.ac.za/Study-at-Mandela/Application/Apply-Undergraduate"},
+  {name:"Tshwane University of Technology", tag:"TUT — diplomas & applied degrees", url:"https://applications-prod.tut.ac.za/"},
   {name:"Cape Peninsula University of Technology", tag:"CPUT — Engineering, Business, Health", url:"https://www.cput.ac.za/study/apply"},
-  {name:"North-West University", tag:"NWU — Potchefstroom, Mahikeng, Vaal", url:"https://www.nwu.ac.za/how-apply"},
-  {name:"Rhodes University", tag:"Small, research-focused, Makhanda", url:"https://www.ru.ac.za/apply/"},
+  {name:"North-West University", tag:"NWU — Potchefstroom, Mahikeng, Vaal", url:"https://studies.nwu.ac.za/studies/apply"},
+  {name:"Rhodes University", tag:"Small, research-focused, Makhanda", url:"https://ross.ru.ac.za/ugadmissions"},
   {name:"University of South Africa (UNISA)", tag:"Distance learning, later closing dates", url:"https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission"},
   {name:"University of KwaZulu-Natal", tag:"UKZN — applies through CAO", url:"https://www.ukzn.ac.za"},
 ];
@@ -529,9 +576,11 @@ const privateInstitutions = [
   {name:"Lyceum College", tag:"Distance learning, business & management", url:"https://www.lyceum.co.za"},
   {name:"AFDA", tag:"Film, TV & performance, Johannesburg/Cape Town/Durban", url:"https://www.afda.co.za"},
   {name:"Regenesys Business School", tag:"Business & leadership qualifications", url:"https://www.regenesys.net"},
-  {name:"CTU Training Solutions", tag:"IT, business, engineering technology", url:"https://www.ctutraining.co.za"},
+  {name:"CTU Training Solutions", tag:"IT, business, engineering technology", url:"https://ctutraining.ac.za/"},
   {name:"Regent Business School", tag:"Business, Durban-based, multiple campuses", url:"https://www.regent.ac.za"},
   {name:"Richfield", tag:"IT, business & health sciences", url:"https://www.richfield.ac.za"},
+  {name:"Akademia", tag:"Afrikaans-medium, Centurion campus", url:"https://akademia.ac.za"},
+  {name:"AAA School of Advertising", tag:"Advertising, marketing & design, Johannesburg/Cape Town/Durban", url:"https://aaaschool.ac.za/"},
 ];
 const privGrid = document.getElementById('private-grid');
 privateInstitutions.forEach(u=>{
@@ -555,20 +604,20 @@ const SUBJECTS = [
 ];
 
 const APS_UNIS = [
-  {id:"up", label:"University of Pretoria (UP)", type:"standard42", note:"Standard scale — best 6 subjects (Life Orientation excluded), 1–7 points each, out of 42.", url:"https://www.up.ac.za/apply", fields:["Commerce","Education","Engineering","IT & Computer Science","Health Sciences","Humanities","Law","Natural Sciences","Agriculture","Built Environment"], prospectusUrl:"https://www.up.ac.za/students/faculty-brochures-2027", prospectusYear:2027},
-  {id:"uj", label:"University of Johannesburg (UJ)", type:"standard42", note:"Standard scale — best 6 subjects (Life Orientation excluded), 1–7 points each, out of 42.", url:"https://www.uj.ac.za/apply/", fields:["Arts & Design","Education","Engineering","Built Environment","Health Sciences","Humanities","Law","Commerce","Natural Sciences","IT & Computer Science"], prospectusUrl:"https://www.uj.ac.za/pdf-document/2026-uj-undergraduate-prospectus/", prospectusYear:2027},
-  {id:"dut", label:"Durban University of Technology (DUT)", type:"standard42", note:"Standard scale — best 6 subjects (Life Orientation excluded), 1–7 points each, out of 42.", url:"https://www.cao.ac.za", fields:["Natural Sciences","Arts & Design","Commerce","IT & Computer Science","Engineering","Built Environment","Health Sciences"]},
+  {id:"up", label:"University of Pretoria (UP)", type:"standard42", note:"Standard scale — best 6 subjects (Life Orientation excluded), 1–7 points each, out of 42.", url:"https://www.up.ac.za/apply", fields:["Commerce","Education","Engineering","IT & Computer Science","Health Sciences","Humanities","Law","Natural Sciences","Agriculture","Built Environment"], prospectusUrl:"https://drupalwebprod-files.up.ac.za/Public/2026-01/UP_UG%20Prospectus%202027_NSC-IEB_DevV5_web_0.pdf?VersionId=mFTqP2HthIDn48ISjWf4b4g6CtdE6beU", prospectusYear:2027},
+  {id:"uj", label:"University of Johannesburg (UJ)", type:"standard42", note:"Standard scale — best 6 subjects (Life Orientation excluded), 1–7 points each, out of 42.", url:"https://www.uj.ac.za/apply/", fields:["Arts & Design","Education","Engineering","Built Environment","Health Sciences","Humanities","Law","Commerce","Natural Sciences","IT & Computer Science"], prospectusUrl:"https://www.uj.ac.za/wp-content/uploads/2026/07/uj_undergrad_prospectus2027_online_25jun2026.pdf", prospectusYear:2027},
+  {id:"dut", label:"Durban University of Technology (DUT)", type:"standard42", note:"Standard scale — best 6 subjects (Life Orientation excluded), 1–7 points each, out of 42.", url:"https://www.cao.ac.za", fields:["Natural Sciences","Arts & Design","Commerce","IT & Computer Science","Engineering","Built Environment","Health Sciences"], prospectusUrl: "https://www.dut.ac.za/wp-content/uploads/2026/06/Study-Opportunities-2027.pdf", prospectusYear: 2027},
   {id:"ufs", label:"University of the Free State (UFS)", type:"standard42", note:"Standard scale — best 6 subjects (Life Orientation excluded), 1–7 points each, out of 42.", url:"https://www.ufs.ac.za/apply", fields:["Commerce","Education","Health Sciences","Humanities","Law","Natural Sciences","Agriculture"], prospectusUrl:"https://www.ufs.ac.za/docs/librariesprovider44/prospectus/ug-prospectus-2027.pdf", prospectusYear:2027},
-  {id:"tut", label:"Tshwane University of Technology (TUT)", type:"tut42", note:"Best 6 subjects, 1–7 points, but any subject below 30% is dropped entirely rather than scored — out of 42.", url:"https://www.tut.ac.za/applications", fields:["Engineering","Built Environment","Humanities","IT & Computer Science","Commerce","Natural Sciences"]},
+  {id:"tut", label:"Tshwane University of Technology (TUT)", type:"tut42", note:"Best 6 subjects, 1–7 points, but any subject below 30% is dropped entirely rather than scored — out of 42.", url:"https://www.tut.ac.za/applications", fields:["Engineering","Built Environment","Humanities","IT & Computer Science","Commerce","Natural Sciences"], prospectusUrl: "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/First-Year-Course_Information.pdf", prospectusYear:2027},
   {id:"unisa", label:"University of South Africa (UNISA)", type:"unisa42", note:"Your English mark plus your best 5 other subjects (Life Orientation excluded), 1–7 points, out of 42.", url:"https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission", fields:["Commerce","Agriculture","Education","Humanities","Law","Natural Sciences","Engineering","IT & Computer Science"], prospectusUrl:"https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications"},
-  {id:"ukzn", label:"University of KwaZulu-Natal (UKZN)", type:"scale48", note:"Stretched scale — 90%+ scores 8 points (not 7). Best 6 subjects, Life Orientation excluded, out of 48.", url:"https://www.ukzn.ac.za", fields:["Agriculture","Engineering","Natural Sciences","Health Sciences","Humanities","Law","Commerce"], prospectusUrl:"https://applications.ukzn.ac.za/prospectus/"},
+  {id:"ukzn", label:"University of KwaZulu-Natal (UKZN)", type:"scale48", note:"Stretched scale — 90%+ scores 8 points (not 7). Best 6 subjects, Life Orientation excluded, out of 48.", url:"https://www.ukzn.ac.za", fields:["Agriculture","Engineering","Natural Sciences","Health Sciences","Humanities","Law","Commerce"], prospectusUrl:"https://applications.ukzn.ac.za/wp-content/uploads/2026/05/2027-Undergrad.pdf"},
   {id:"nwu", label:"North-West University (NWU)", type:"scale48", note:"Stretched scale — 90%+ scores 8 points (not 7). Best 6 subjects, Life Orientation excluded, out of 48.", url:"https://www.nwu.ac.za/how-apply", fields:["Commerce","Education","Engineering","Health Sciences","Humanities","Law","Natural Sciences","Agriculture"], prospectusUrl:"https://studies.nwu.ac.za/undergraduate-studies/fields-study-2027", prospectusYear:2027},
-  {id:"wits", label:"University of the Witwatersrand (Wits)", type:"wits56", note:"Best 7 subjects including Life Orientation (capped at 4 points). English & Maths get +2 bonus points at 60%+, out of 56.", url:"https://www.wits.ac.za/study-at-wits/undergraduate-study/how-to-apply/", fields:["Commerce","Law","Engineering","Built Environment","Health Sciences","Humanities","Natural Sciences","IT & Computer Science"], prospectusUrl:"https://www.wits.ac.za/about-wits/general-prospectus/"},
+  {id:"wits", label:"University of the Witwatersrand (Wits)", type:"wits56", note:"Best 7 subjects including Life Orientation (capped at 4 points). English & Maths get +2 bonus points at 60%+, out of 56.", url:"https://www.wits.ac.za/study-at-wits/undergraduate-study/how-to-apply/", fields:["Commerce","Law","Engineering","Built Environment","Health Sciences","Humanities","Natural Sciences","IT & Computer Science"], prospectusUrl:"https://www.universityinfo.co.za/prospectus/wits-prospectus.pdf"},
   {id:"sun", label:"Stellenbosch University (SU)", type:"percentAgg", note:"Not a points score — your Language of Learning plus best 5 others, averaged as a percentage (Life Orientation excluded).", url:"https://www.sun.ac.za/english/apply", fields:["Agriculture","Humanities","Commerce","Education","Engineering","Law","Health Sciences","Natural Sciences"], prospectusUrl:"https://files.su.ac.za/public/undergraduate-maties/documents/2026-01/su-admissions-booklet-2027.pdf", prospectusYear:2027},
   {id:"nmu", label:"Nelson Mandela University (NMU)", type:"percentSum600", note:"'Applicant Score' — raw percentages of your best 6 subjects added together, Life Orientation excluded, out of 600.", url:"https://www.mandela.ac.za/Study-at-Mandela/Applications", fields:["Commerce","Education","Engineering","Built Environment","Health Sciences","Humanities","Law","Natural Sciences"], prospectusUrl:"https://publications.mandela.ac.za/publications/media/Store/documents/Prospective%20students/MandelaUni-Undergraduate-Guide.pdf"},
-  {id:"uct", label:"University of Cape Town (UCT)", type:"percentSum600", note:"UCT runs a different Faculty Points Score per faculty (Science doubles Maths & Physical Sciences). This is a simplified estimate — best 6 raw percentages, out of 600.", url:"https://www.uct.ac.za/apply", fields:["Commerce","Engineering","Health Sciences","Humanities","Law","Natural Sciences","Built Environment","IT & Computer Science"], prospectusUrl:"https://uct.ac.za/students/prospective-students/undergraduate-prospectus"},
+  {id:"uct", label:"University of Cape Town (UCT)", type:"percentSum600", note:"UCT runs a different Faculty Points Score per faculty (Science doubles Maths & Physical Sciences). This is a simplified estimate — best 6 raw percentages, out of 600.", url:"https://www.uct.ac.za/apply", fields:["Commerce","Engineering","Health Sciences","Humanities","Law","Natural Sciences","Built Environment","IT & Computer Science"], prospectusUrl:"https://uct.ac.za/sites/default/files/media/documents/2027-uct-undergraduate-prospectus-1-april-2026.pdf"},
   {id:"cput", label:"Cape Peninsula University of Technology (CPUT)", type:"percentSum600", note:"Raw percentages of your best 6 subjects added together, Life Orientation excluded, out of 600.", url:"https://www.cput.ac.za/study/apply", fields:["Natural Sciences","Commerce","Education","Engineering","Health Sciences","IT & Computer Science","Arts & Design"], prospectusUrl:"https://www.cput.ac.za/study-at-cput/undergraduate/prospectus"},
-  {id:"ru", label:"Rhodes University", type:"rhodes", note:"Each subject's percentage ÷ 10 (below 40% scores 0), best 6 subjects excluding Life Orientation (which needs 50%+ separately), out of 60.", url:"https://www.ru.ac.za/apply/", fields:["Commerce","Education","Humanities","Law","Health Sciences","Natural Sciences"], prospectusUrl:"https://www.ru.ac.za/admissiongateway/"},
+  {id:"ru", label:"Rhodes University", type:"rhodes", note:"Each subject's percentage ÷ 10 (below 40% scores 0), best 6 subjects excluding Life Orientation (which needs 50%+ separately), out of 60.", url:"https://www.ru.ac.za/apply/", fields:["Commerce","Education","Humanities","Law","Health Sciences","Natural Sciences"], prospectusUrl:"https://www.ru.ac.za/media/rhodesuniversity/content/registrar/documents/information/studentrecruitment/RU_READY_Undergraduate_Prospectus_2026_DIGITAL_A5_Landscape_24pp_18Mar2026.pdf"},
   {id:"uwc", label:"University of the Western Cape (UWC)", type:"standard42", note:"UWC weights English & Maths more heavily in its real system. This estimate uses the standard 42-point scale — confirm your exact score with UWC directly.", url:"https://www.uwc.ac.za/study/applications", fields:["Humanities","Health Sciences","Commerce","Education","Law","Natural Sciences","IT & Computer Science"], prospectusUrl:"https://www.uwc.ac.za/files/files/UWC-2027-Application-Guide.pdf", prospectusYear:2027},
 ];
 
@@ -839,16 +888,21 @@ document.getElementById('chat-start').onclick = async ()=>{
   document.getElementById('chat-setup').style.display='none';
   document.getElementById('chat-live').style.display='flex';
 
-  const chatRef = db.collection('chats').doc(chatId);
-  const snap = await chatRef.get();
-  if(!snap.exists){
+  try{
+    // Merge-set works whether this chat exists yet or not — Firestore evaluates
+    // it as a "create" for a brand-new doc, or "update" for a returning visitor,
+    // so we never need to read the doc first (which our rules correctly refuse
+    // to allow before we can prove it's ours).
+    const chatRef = db.collection('chats').doc(chatId);
     await chatRef.set({
       name, phone, visitorUid,
-      lastMessage:'', lastTs: firebase.firestore.FieldValue.serverTimestamp(),
-      createdAt: firebase.firestore.FieldValue.serverTimestamp()
-    });
+      lastTs: firebase.firestore.FieldValue.serverTimestamp()
+    }, {merge:true});
+    listenToChat(chatId);
+  }catch(err){
+    console.error('Could not start chat:', err);
+    document.getElementById('chat-body').innerHTML = '<div class="chat-empty">Something went wrong starting the chat — please try again in a moment.</div>';
   }
-  listenToChat(chatId);
 };
 
 function listenToChat(id){
@@ -876,9 +930,15 @@ async function sendChatMessage(){
   const text = input.value.trim();
   if(!text || !chatId) return;
   input.value='';
-  const chatRef = db.collection('chats').doc(chatId);
-  await chatRef.collection('messages').add({sender:'visitor', text, ts: firebase.firestore.FieldValue.serverTimestamp()});
-  await chatRef.update({lastMessage:text, lastTs: firebase.firestore.FieldValue.serverTimestamp()});
+  try{
+    const chatRef = db.collection('chats').doc(chatId);
+    await chatRef.collection('messages').add({sender:'visitor', text, ts: firebase.firestore.FieldValue.serverTimestamp()});
+    await chatRef.set({lastMessage:text, lastTs: firebase.firestore.FieldValue.serverTimestamp()}, {merge:true});
+  }catch(err){
+    console.error('Could not send message:', err);
+    input.value = text; // give the message back so it isn't lost
+    alert("That message didn't send — please try again.");
+  }
 }
 document.getElementById('chat-send').onclick = sendChatMessage;
 document.getElementById('chat-input').addEventListener('keydown', e=>{ if(e.key==='Enter') sendChatMessage(); });
@@ -971,9 +1031,15 @@ async function openAdminChat(id){
     const text = input.value.trim();
     if(!text) return;
     input.value='';
-    const chatRef = db.collection('chats').doc(id);
-    await chatRef.collection('messages').add({sender:'boitumelo', text, ts: firebase.firestore.FieldValue.serverTimestamp()});
-    await chatRef.update({lastMessage:text, lastTs: firebase.firestore.FieldValue.serverTimestamp()});
+    try{
+      const chatRef = db.collection('chats').doc(id);
+      await chatRef.collection('messages').add({sender:'boitumelo', text, ts: firebase.firestore.FieldValue.serverTimestamp()});
+      await chatRef.set({lastMessage:text, lastTs: firebase.firestore.FieldValue.serverTimestamp()}, {merge:true});
+    }catch(err){
+      console.error('Could not send reply:', err);
+      input.value = text;
+      alert("That reply didn't send — please try again.");
+    }
   };
 }
 
