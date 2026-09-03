@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bursaries in South Africa: NSFAS, Sector & Corporate Funding — UniUnlocked</title>
+<title>Bursaries in South Africa: NSFAS, Sector and Corporate Funding — UniUnlocked</title>
 <meta name="description" content="A real starting list of bursaries for South African students — NSFAS explained in full, plus corporate and sector bursaries from Sasol, Eskom, SAICA, StudyTrust and more.">
 <link rel="canonical" href="https://uniunlocked.com/bursaries.html">
-<meta property="og:title" content="Bursaries in South Africa: NSFAS, Sector & Corporate Funding — UniUnlocked">
+<meta property="og:title" content="Bursaries in South Africa: NSFAS, Sector and Corporate Funding — UniUnlocked">
 <meta property="og:description" content="A real starting list of bursaries for South African students — NSFAS explained in full, plus corporate and sector bursaries from Sasol, Eskom, SAICA, StudyTrust and more.">
 <meta property="og:url" content="https://uniunlocked.com/bursaries.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="UniUnlocked">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bursaries in South Africa: NSFAS, Sector & Corporate Funding — UniUnlocked">
+<meta name="twitter:title" content="Bursaries in South Africa: NSFAS, Sector and Corporate Funding — UniUnlocked">
 <meta name="twitter:description" content="A real starting list of bursaries for South African students — NSFAS explained in full, plus corporate and sector bursaries from Sasol, Eskom, SAICA, StudyTrust and more.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -29,7 +29,8 @@
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{margin:0;background:var(--parchment);color:var(--ink);font-family:'Public Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+  body{margin:0;background-color:var(--parchment);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");color:var(--ink);font-family:'Public Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+  #scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--gold);z-index:100;width:0%;}
   h1,h2,h3,.display{font-family:'Fraunces',serif;letter-spacing:-0.01em;}
   .mono{font-family:'IBM Plex Mono',monospace;letter-spacing:0.02em;}
   a{color:inherit;}
@@ -39,10 +40,12 @@
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;flex-wrap:wrap;gap:10px;}
   .logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:18px;}
   .logo-mark{width:30px;height:30px;border-radius:50%;background:conic-gradient(from 220deg, var(--gold), var(--teal), var(--navy));display:flex;align-items:center;justify-content:center;color:var(--parchment);font-family:'Fraunces',serif;font-size:14px;font-weight:600;}
-  .back-link{font-size:13px;font-weight:600;color:var(--teal);text-decoration:none;}
+  .back-link{font-size:13px;font-weight:600;color:var(--teal);text-decoration:none;transition:opacity .15s;}
+  .back-link:hover{opacity:0.7;}
 
   header.hero{padding:56px 0 36px;}
-  .eyebrow{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);border:1px solid var(--teal);border-radius:99px;padding:4px 12px;margin-bottom:18px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:15px;color:var(--teal);font-family:'Fraunces',serif;font-style:italic;font-weight:500;margin-bottom:14px;}
+  .eyebrow::before{content:'';display:inline-block;width:16px;height:1px;background:var(--teal);}
   h1.display{font-size:clamp(30px,4.6vw,48px);line-height:1.05;font-weight:600;max-width:760px;margin:0 0 16px;}
   h1.display em{font-style:italic;color:var(--gold-deep);}
   .hero-sub{font-size:16px;max-width:600px;line-height:1.55;opacity:0.82;}
@@ -57,7 +60,7 @@
   .split-card{border-radius:16px;padding:26px;}
   .split-card.public-only{background:var(--navy);color:var(--parchment);}
   .split-card.both{background:#fff;border:1px solid rgba(14,27,51,0.1);}
-  .split-card .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;opacity:0.75;}
+  .split-card .tag{font-family:'Public Sans',sans-serif;font-weight:700;font-size:13px;margin-bottom:10px;opacity:0.9;}
   .split-card.public-only .tag{color:var(--gold);}
   .split-card.both .tag{color:var(--teal);}
   .split-card h3{font-size:18px;margin:0 0 10px;}
@@ -82,6 +85,7 @@
 </style>
 </head>
 <body>
+<div id="scroll-progress"></div>
 
 <nav>
   <div class="wrap">
@@ -123,7 +127,7 @@
 
     <div class="split-card public-only" style="margin-top:16px;">
       <div class="tag">Apply directly</div>
-      <p style="opacity:1;">This isn't something any third party, including this site, can apply on your behalf for. <a href="https://www.nsfas.org.za" target="_blank" rel="noopener" style="color:var(--gold);font-weight:700;">Go to nsfas.org.za →</a></p>
+      <p style="opacity:1;">This isn't something any third party, including this site, can apply on your behalf for. <a href="https://www.nsfas.org.za" target="_blank" rel="noopener" style="color:var(--gold);font-weight:700;">Go to nsfas.org.za</a></p>
     </div>
   </div>
 </section>
@@ -139,12 +143,12 @@
     <div class="split-grid">
       <div class="split-card public-only">
         <div class="tag">Public institutions only</div>
-        <h3>NSFAS &amp; most government funding</h3>
+        <h3>NSFAS and most government funding</h3>
         <p>NSFAS only funds South Africa's 26 public universities and 50 public TVET colleges — it does not fund private institutions like IIE, Eduvos, or STADIO. Most provincial and departmental government bursaries follow the same rule. Always check "eligible institutions" before assuming your private college qualifies.</p>
       </div>
       <div class="split-card both">
         <div class="tag">Usually open to both</div>
-        <h3>Corporate &amp; sector bursaries</h3>
+        <h3>Corporate and sector bursaries</h3>
         <p>Company-funded bursaries (Sasol, Eskom, Standard Bank, and similar) are typically open to students at any accredited institution — public or private — since the company cares about the qualification and skill, not who taught it. "Usually" isn't "always," though — each funder sets its own list, so confirm on their page before you apply.</p>
       </div>
     </div>
@@ -167,14 +171,14 @@
 
 <footer>
   <div class="wrap">
-    Built by Tswelopele Boitumelo Mollo &amp; Prof Nicholus Tumelo Mollo · UniUnlocked, South Africa · <a href="index.html" style="color:var(--teal);font-weight:600;">Back to main site</a>
+    Built by Tswelopele Boitumelo Mollo and Prof Nicholus Tumelo Mollo · UniUnlocked, South Africa · <a href="index.html" style="color:var(--teal);font-weight:600;">Back to main site</a>
   </div>
 </footer>
 
 <script>
 const BURSARY_CATEGORIES = [
   {
-    title: "Government & need-based (public institutions only)",
+    title: "Government and need-based (public institutions only)",
     items: [
       {name:"NSFAS", field:"Household income under R350,000 — full bursary, tuition + living costs", url:"https://www.nsfas.org.za"},
       {name:"Funza Lushaka Bursary", field:"Teaching (B.Ed) — priority subjects like Maths, Science, languages. No income test.", url:"https://www.funzalushaka.doe.gov.za"},
@@ -190,17 +194,17 @@ const BURSARY_CATEGORIES = [
     ]
   },
   {
-    title: "Engineering, science & energy",
+    title: "Engineering, science and energy",
     items: [
       {name:"Sasol Bursary", field:"Engineering, science, IT, commerce", url:"https://www.sasol.com"},
       {name:"Eskom Bursary", field:"Engineering, IT, finance, science", url:"https://www.eskom.co.za"},
-      {name:"Transnet Bursary", field:"Engineering & logistics, with a work-back commitment", url:"https://www.transnet.net"},
+      {name:"Transnet Bursary", field:"Engineering and logistics, with a work-back commitment", url:"https://www.transnet.net"},
       {name:"Anglo American Bursary", field:"Mining, metallurgical, mechanical, electrical engineering", url:"https://www.angloamerican.com"},
       {name:"IDC External Bursary", field:"STEM, Commerce and Law", url:"https://www.idc.co.za"},
     ]
   },
   {
-    title: "Commerce, finance & accounting",
+    title: "Commerce, finance and accounting",
     items: [
       {name:"Thuthuka Bursary Fund (SAICA)", field:"BCom Accounting, on the CA(SA) pathway", url:"https://www.saica.org.za"},
       {name:"Standard Bank Bursary", field:"Finance, banking, IT, engineering — with graduate pipeline", url:"https://www.standardbank.co.za"},
@@ -209,7 +213,7 @@ const BURSARY_CATEGORIES = [
     ]
   },
   {
-    title: "IT & telecommunications",
+    title: "IT and telecommunications",
     items: [
       {name:"Vodacom Bursary", field:"IT, engineering, computer science", url:"https://www.vodacom.co.za"},
       {name:"MTN Bursary", field:"Engineering, IT, computer science", url:"https://www.mtn.co.za"},
@@ -225,7 +229,7 @@ BURSARY_CATEGORIES.forEach(cat=>{
     <a class="bursary-card" href="${b.url}" target="_blank" rel="noopener">
       <div class="name">${b.name}</div>
       <div class="field">${b.field}</div>
-      <div class="go">Visit site →</div>
+      <div class="go">Visit site</div>
     </a>`).join('');
   block.innerHTML = `
     <div class="category-title"><h3>${cat.title}</h3></div>
