@@ -29,7 +29,8 @@
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{margin:0;background:var(--parchment);color:var(--ink);font-family:'Public Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+  body{margin:0;background-color:var(--parchment);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");color:var(--ink);font-family:'Public Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+  #scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--gold);z-index:100;width:0%;}
   h1,h2,h3,.display{font-family:'Fraunces',serif;letter-spacing:-0.01em;}
   .mono{font-family:'IBM Plex Mono',monospace;letter-spacing:0.02em;}
   a{color:inherit;}
@@ -39,10 +40,12 @@
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;flex-wrap:wrap;gap:10px;}
   .logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:18px;}
   .logo-mark{width:30px;height:30px;border-radius:50%;background:conic-gradient(from 220deg, var(--gold), var(--teal), var(--navy));display:flex;align-items:center;justify-content:center;color:var(--parchment);font-family:'Fraunces',serif;font-size:14px;font-weight:600;}
-  .back-link{font-size:13px;font-weight:600;color:var(--teal);text-decoration:none;}
+  .back-link{font-size:13px;font-weight:600;color:var(--teal);text-decoration:none;transition:opacity .15s;}
+  .back-link:hover{opacity:0.7;}
 
   header.hero{padding:56px 0 36px;}
-  .eyebrow{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);border:1px solid var(--teal);border-radius:99px;padding:4px 12px;margin-bottom:18px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:15px;color:var(--teal);font-family:'Fraunces',serif;font-style:italic;font-weight:500;margin-bottom:14px;}
+  .eyebrow::before{content:'';display:inline-block;width:16px;height:1px;background:var(--teal);}
   h1.display{font-size:clamp(30px,4.6vw,48px);line-height:1.05;font-weight:600;max-width:760px;margin:0 0 16px;}
   h1.display em{font-style:italic;color:var(--gold-deep);}
   .hero-sub{font-size:16px;max-width:600px;line-height:1.55;opacity:0.82;}
@@ -55,7 +58,7 @@
   .path-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
   @media (max-width:700px){.path-grid{grid-template-columns:1fr;}}
   .path-card{background:#fff;border:1px solid rgba(14,27,51,0.1);border-radius:16px;padding:26px;}
-  .path-card .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;color:var(--teal);letter-spacing:0.06em;margin-bottom:10px;}
+  .path-card .tag{font-family:'Public Sans',sans-serif;font-weight:700;font-size:13px;color:var(--teal);margin-bottom:10px;}
   .path-card h3{font-size:19px;margin:0 0 10px;}
   .path-card p{font-size:14px;line-height:1.6;opacity:0.85;margin:0 0 10px;}
   .path-card ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.8;opacity:0.85;}
@@ -83,6 +86,7 @@
 </style>
 </head>
 <body>
+<div id="scroll-progress"></div>
 
 <nav>
   <div class="wrap">
@@ -109,7 +113,7 @@
 
     <div class="path-grid">
       <div class="path-card">
-        <div class="tag">Path one</div>
+        <div class="tag">School-leaver route</div>
         <h3>NCV — National Certificate (Vocational)</h3>
         <p>A 3-year, school-equivalent path (NQF Levels 2–4), usually started straight after Grade 9 or Grade 10. It combines a vocational subject stream with fundamentals like Maths/Maths Literacy and English, and is treated as equivalent to matric once completed.</p>
         <ul>
@@ -118,7 +122,7 @@
         </ul>
       </div>
       <div class="path-card">
-        <div class="tag">Path two</div>
+        <div class="tag">Work-integrated route</div>
         <h3>NATED (Report 191) — N1 to N6</h3>
         <p>A more work-integrated path, often chosen after matric or while already employed. Each "N" level is a college term, usually followed by required practical workplace experience — completing N4–N6 plus the work experience leads to a National Diploma.</p>
         <ul>
@@ -162,14 +166,14 @@
   <div class="wrap">
     <div class="cta-banner">
       <div><strong>TVET colleges are NSFAS-funded too</strong> — the same R350,000 household income threshold applies as for university.</div>
-      <a href="index.html#nsfas">See how NSFAS works →</a>
+      <a href="index.html#nsfas">See how NSFAS works</a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    Built by Tswelopele Boitumelo Mollo & Prof Nicholus Tumelo Mollo · UniUnlocked, South Africa · <a href="index.html" style="color:var(--teal);font-weight:600;">Back to main site</a>
+    Built by Tswelopele Boitumelo Mollo and Prof Nicholus Tumelo Mollo · UniUnlocked, South Africa · <a href="index.html" style="color:var(--teal);font-weight:600;">Back to main site</a>
   </div>
 </footer>
 
@@ -252,12 +256,12 @@ TVET_PROVINCES.forEach(prov=>{
   const grid = prov.colleges.map(c=>{
     if(c.url){
       return `<a class="college-card" href="${c.url}" target="_blank" rel="noopener">
-        <span>${c.name}</span><span class="go">Visit site →</span>
+        <span>${c.name}</span><span class="go">Visit site</span>
       </a>`;
     }
     const q = encodeURIComponent(c.name + ' official website');
     return `<a class="college-card" href="https://www.google.com/search?q=${q}" target="_blank" rel="noopener">
-      <span>${c.name}</span><span class="go">Find site →</span>
+      <span>${c.name}</span><span class="go">Find site</span>
     </a>`;
   }).join('');
   block.innerHTML = `
