@@ -39,49 +39,46 @@
   nav{position:sticky;top:0;z-index:40;background:rgba(245,239,224,0.92);backdrop-filter:blur(6px);border-bottom:1px solid rgba(14,27,51,0.12);}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;flex-wrap:wrap;gap:10px;}
   .logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:18px;}
-  .logo-mark{width:30px;height:30px;border-radius:50%;background:conic-gradient(from 220deg, var(--gold), var(--teal), var(--navy));display:flex;align-items:center;justify-content:center;color:var(--parchment);font-family:'Fraunces',serif;font-size:14px;font-weight:600;}
   .back-link{font-size:13px;font-weight:600;color:var(--teal);text-decoration:none;transition:opacity .15s;}
   .back-link:hover{opacity:0.7;}
 
-  header.hero{padding:56px 0 36px;}
-  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:15px;color:var(--teal);font-family:'Fraunces',serif;font-style:italic;font-weight:500;margin-bottom:14px;}
-  .eyebrow::before{content:'';display:inline-block;width:16px;height:1px;background:var(--teal);}
-  h1.display{font-size:clamp(30px,4.6vw,48px);line-height:1.05;font-weight:600;max-width:760px;margin:0 0 16px;}
-  h1.display em{font-style:italic;color:var(--gold-deep);}
-  .hero-sub{font-size:16px;max-width:600px;line-height:1.55;opacity:0.82;}
+  header.hero{padding:36px 0 22px;}
+  h1.display{font-size:clamp(30px,4.6vw,48px);line-height:1.05;font-weight:600;max-width:760px;margin:0 0 14px;}
+  h1.display em{font-style:italic;color:inherit;}
+  .hero-sub{font-size:16px;max-width:600px;line-height:1.55;opacity:0.7;}
 
-  section{padding:44px 0;}
-  .section-head{margin-bottom:28px;max-width:680px;}
-  .section-head h2{font-size:clamp(24px,3vw,32px);font-weight:600;margin:0 0 10px;}
-  .section-head p{opacity:0.75;line-height:1.55;font-size:15px;margin:0;}
+  section{padding:28px 0;}
+  .section-head{margin-bottom:20px;max-width:680px;}
+  .section-head h2{font-size:clamp(24px,3vw,32px);font-weight:600;margin:0 0 8px;}
+  .section-head p{opacity:0.7;line-height:1.55;font-size:15px;margin:0;}
 
-  .split-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .split-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   @media (max-width:700px){.split-grid{grid-template-columns:1fr;}}
-  .split-card{border-radius:16px;padding:26px;}
+  .split-card{border-radius:16px;padding:20px 22px;}
   .split-card.public-only{background:var(--navy);color:var(--parchment);}
   .split-card.both{background:#fff;border:1px solid rgba(14,27,51,0.1);}
-  .split-card .tag{font-family:'Public Sans',sans-serif;font-weight:700;font-size:13px;margin-bottom:10px;opacity:0.9;}
+  .split-card .tag{font-family:'Public Sans',sans-serif;font-weight:700;font-size:13px;margin-bottom:8px;opacity:0.9;}
   .split-card.public-only .tag{color:var(--gold);}
   .split-card.both .tag{color:var(--teal);}
-  .split-card h3{font-size:18px;margin:0 0 10px;}
+  .split-card h3{font-size:18px;margin:0 0 8px;}
   .split-card p{font-size:13.5px;line-height:1.6;margin:0;opacity:0.9;}
 
-  .bursary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .bursary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
   @media (max-width:860px){.bursary-grid{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:560px){.bursary-grid{grid-template-columns:1fr;}}
-  .bursary-card{background:#fff;border:1px solid rgba(14,27,51,0.1);border-radius:14px;padding:18px 20px;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;gap:6px;transition:border-color .15s, transform .15s;}
+  .bursary-card{background:#fff;border:1px solid rgba(14,27,51,0.1);border-radius:14px;padding:14px 16px;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;gap:6px;transition:border-color .15s, transform .15s;}
   .bursary-card:hover{border-color:var(--gold);transform:translateY(-2px);}
   .bursary-card .name{font-family:'Fraunces',serif;font-weight:600;font-size:15.5px;}
   .bursary-card .field{font-size:12px;opacity:0.65;line-height:1.4;}
   .bursary-card .go{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--teal);margin-top:4px;}
 
-  .category-block{margin-bottom:36px;}
-  .category-title{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .category-block{margin-bottom:24px;}
+  .category-title{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
   .category-title h3{font-size:19px;margin:0;}
 
-  .disclaimer{font-size:12px;opacity:0.55;margin-top:18px;line-height:1.5;}
+  .disclaimer{font-size:12px;opacity:0.55;margin-top:12px;line-height:1.5;}
 
-  footer{padding:36px 0;text-align:center;font-size:12.5px;opacity:0.6;}
+  footer{padding:28px 0;text-align:center;font-size:12.5px;opacity:0.6;}
 </style>
 </head>
 <body>
@@ -89,24 +86,22 @@
 
 <nav>
   <div class="wrap">
-    <div class="logo"><span class="logo-mark">BM</span> UniUnlocked</div>
+    <div class="logo">UniUnlocked</div>
     <a class="back-link" href="index.html">← Back to main site</a>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow">Funding your studies</span>
     <h1 class="display">Bursaries worth <em>knowing about.</em></h1>
-    <p class="hero-sub">Beyond NSFAS, dozens of government bodies, companies, and foundations fund students every year. Most successful applicants apply to 10–20 of these in one cycle — here's a real starting list, sorted by who actually funds what.</p>
+    <p class="hero-sub">Beyond NSFAS, dozens of government bodies, companies, and foundations fund students every year. Most successful applicants apply to 10–20 of these in one cycle, here's a real starting list, sorted by who actually funds what.</p>
   </div>
 </header>
 
 <section id="nsfas-detail">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Start here</span>
-      <h2>NSFAS — the big one.</h2>
+      <h2>NSFAS</h2>
       <p>Before any of the bursaries below, this is the funding most South African students should check first. The National Student Financial Aid Scheme is the government's main scheme for students who can't afford university or TVET college on their own.</p>
     </div>
 
@@ -125,7 +120,7 @@
       </div>
     </div>
 
-    <div class="split-card public-only" style="margin-top:16px;">
+    <div class="split-card public-only" style="margin-top:12px;">
       <div class="tag">Apply directly</div>
       <p style="opacity:1;">This isn't something any third party, including this site, can apply on your behalf for. <a href="https://www.nsfas.org.za" target="_blank" rel="noopener" style="color:var(--gold);font-weight:700;">Go to nsfas.org.za</a></p>
     </div>
@@ -135,8 +130,7 @@
 <section id="public-private">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Read this part first</span>
-      <h2>Public-only vs. open to both</h2>
+      <h2>Public only vs. open to both</h2>
       <p>This is the single most common mix-up when applying: not every bursary works at every type of institution.</p>
     </div>
 
@@ -158,14 +152,13 @@
 <section id="directory">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Where to apply</span>
       <h2>Bursary directory.</h2>
-      <p>Grouped by who's funding and what they're looking for. This isn't exhaustive — new ones open every year — but it's a solid starting list of established, legitimate funders.</p>
+      <p>Grouped by who's funding and what they're looking for. This isn't exhaustive new ones open every year, but it's a solid starting list of established, legitimate funders.</p>
     </div>
 
     <div id="bursary-directory"></div>
 
-    <p class="disclaimer">Deadlines, amounts, and eligibility criteria change every cycle and vary by funder — this page deliberately doesn't list specific closing dates or Rand amounts, since those go stale fast and a wrong number here could cost someone a missed deadline. Confirm every detail directly on the funder's own page before applying or submitting documents.</p>
+    <p class="disclaimer">Deadlines, amounts, and eligibility criteria change every cycle and vary by funder, this page deliberately doesn't list specific closing dates or Rand amounts, since those go stale fast and a wrong number here could cost someone a missed deadline. Confirm every detail directly on the funder's own page before applying or submitting documents.</p>
   </div>
 </section>
 
