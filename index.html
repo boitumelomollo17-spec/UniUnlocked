@@ -37,6 +37,7 @@
     color:var(--ink);
     font-family:'Public Sans',sans-serif;
     -webkit-font-smoothing:antialiased;
+    position:relative;
   }
   h1,h2,h3,.display{
     font-family:'Fraunces',serif;
@@ -45,7 +46,13 @@
   .mono{font-family:'IBM Plex Mono',monospace; letter-spacing:0.02em;}
   a{color:inherit;}
   #scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--gold);z-index:100;width:0%;}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;position:relative;}
+
+  /* organic blobs */
+  .blob{position:absolute;border-radius:50%;filter:blur(50px);pointer-events:none;z-index:0;}
+  .blob-gold{background:radial-gradient(circle at 35% 35%, rgba(201,151,62,0.30), rgba(201,151,62,0) 70%);}
+  .blob-teal{background:radial-gradient(circle at 60% 40%, rgba(20,85,90,0.22), rgba(20,85,90,0) 70%);}
+  .blob-flag{background:radial-gradient(circle at 50% 50%, rgba(184,70,50,0.16), rgba(184,70,50,0) 70%);}
 
 /*Navigation bar */
   nav{
@@ -54,19 +61,42 @@
     backdrop-filter:blur(6px);
     border-bottom:1px solid rgba(14,27,51,0.12);
   }
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
-  .logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:18px;}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:18px;flex-shrink:0;}
   .logo-mark{
     width:30px;height:30px;border-radius:50%;
     background:conic-gradient(from 220deg, var(--gold), var(--teal), var(--navy));
     display:flex;align-items:center;justify-content:center;
     color:var(--parchment);font-family:'Fraunces',serif;font-size:14px;font-weight:600;
   }
-  nav ul{list-style:none;display:flex;gap:28px;margin:0;padding:0;font-size:14px;font-weight:500;}
-  nav a.navlink{text-decoration:none;opacity:0.75;transition:opacity .15s;}
+  nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0;font-size:13.5px;font-weight:500;flex-wrap:wrap;justify-content:flex-end;}
+  nav a.navlink{text-decoration:none;opacity:0.75;transition:opacity .15s;white-space:nowrap;}
   nav a.navlink:hover{opacity:1;}
 
-  header.hero{padding:72px 0 40px;position:relative;overflow:hidden;}
+  /* hamburger — keeps the nav from colliding with the logo on narrower screens */
+  #nav-toggle{
+    display:none;background:none;border:none;cursor:pointer;padding:6px;
+    width:36px;height:36px;flex-shrink:0;
+  }
+  #nav-toggle span{display:block;width:100%;height:2px;background:var(--navy);margin:6px 0;transition:transform .2s ease, opacity .2s ease;}
+  #nav-toggle.open span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+  #nav-toggle.open span:nth-child(2){opacity:0;}
+  #nav-toggle.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+
+  @media (max-width:980px){
+    #nav-toggle{display:block;}
+    nav ul{
+      display:none;flex-direction:column;gap:0;position:absolute;top:60px;left:0;right:0;
+      background:var(--parchment);border-bottom:1px solid rgba(14,27,51,0.12);
+      padding:6px 24px 14px;
+    }
+    nav ul.open{display:flex;}
+    nav ul li{width:100%;}
+    nav a.navlink{display:block;padding:10px 0;border-bottom:1px solid rgba(14,27,51,0.08);}
+    nav ul li:last-child a.navlink{border-bottom:none;}
+  }
+
+  header.hero{padding:44px 0 28px;position:relative;overflow:hidden;}
   .hero-mark{position:absolute;top:-40px;right:-60px;width:420px;height:420px;opacity:0.06;pointer-events:none;}
   @media (max-width:900px){.hero-mark{display:none;}}
   .eyebrow{
@@ -81,27 +111,33 @@
     background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='10'%3E%3Cpath d='M0 6 Q15 0 30 6 T60 6' fill='none' stroke='%23C9973E' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x;
     background-size:34px 9px;
   }
-  .hero-sub{font-size:17px;max-width:560px;line-height:1.55;opacity:0.82;margin-bottom:36px;}
+  .hero-sub{font-size:17px;max-width:560px;line-height:1.55;opacity:0.7;margin-bottom:22px;}
 
-  .fork{position:relative;padding-top:8px;}
+  /* asymmetric hero layout: text left third, routes overlapping right two-thirds */
+  .hero-layout{position:relative;}
+  .hero-copy{position:relative;z-index:2;max-width:700px;}
+  .fork{position:relative;padding-top:8px;z-index:1;}
   .fork-line{
-    display:flex;align-items:center;gap:10px;margin-bottom:22px;
+    display:flex;align-items:center;gap:10px;margin-bottom:14px;
     font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--navy);opacity:0.6;
   }
   .fork-line .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
   .fork-line .line{flex:1;height:1px;background:linear-gradient(to right, var(--gold), transparent);}
-  .routes{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .routes{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   @media (max-width:720px){.routes{grid-template-columns:1fr;}}
   .route-card{
-    border-radius:18px;padding:28px;position:relative;overflow:hidden;
+    border-radius:18px;padding:20px 22px;position:relative;overflow:hidden;
     border:1px solid rgba(14,27,51,0.1);
     transition:transform .18s ease, box-shadow .18s ease;
     cursor:pointer;
+    text-decoration:none;
+    display:block;
   }
+  @media (max-width:840px){.route-card{width:100%;}}
   .route-card:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(14,27,51,0.14);}
   .route-card.self{background:var(--parchment-dim);}
-  .route-card h3{font-size:24px;margin:0 0 8px;font-weight:600;}
-  .route-card p{font-size:14.5px;line-height:1.5;opacity:0.85;margin:0 0 20px;}
+  .route-card h3{font-size:22px;margin:0 0 6px;font-weight:600;}
+  .route-card p{font-size:14.5px;line-height:1.5;opacity:0.85;margin:0 0 12px;}
   .route-card .cta{
     display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;
     text-decoration:none;color:var(--teal);position:relative;
@@ -112,20 +148,20 @@
   }
   .route-card:hover .cta::after{width:100%;}
 
-  section{padding:68px 0;}
+  section{padding:44px 0;position:relative;}
   section.tint{background:var(--parchment-dim);}
-  .section-head{margin-bottom:38px;max-width:640px;}
+  .section-head{margin-bottom:24px;max-width:640px;position:relative;z-index:1;}
   .section-head .eyebrow{margin-bottom:10px;}
   .section-head h2{font-size:clamp(26px,3.4vw,36px);font-weight:600;margin:0 0 10px;}
-  .section-head p{opacity:0.75;line-height:1.55;font-size:15px;margin:0;}
+  .section-head p{opacity:0.7;line-height:1.55;font-size:15px;margin:0;}
 
   /* university grid */
-  .uni-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .uni-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
   @media (max-width:860px){.uni-grid{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:560px){.uni-grid{grid-template-columns:1fr;}}
   .uni-card{
     background:#fff;border:1px solid rgba(14,27,51,0.1);border-radius:14px;
-    padding:18px 20px;text-decoration:none;color:var(--ink);
+    padding:14px 16px;text-decoration:none;color:var(--ink);
     display:flex;flex-direction:column;gap:6px;transition:border-color .15s, transform .15s;
   }
   .uni-card:hover{border-color:var(--gold);transform:translateY(-2px);}
@@ -133,19 +169,19 @@
   .uni-card .tag{font-size:12.5px;opacity:0.65;line-height:1.4;}
   .uni-card .go{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--teal);margin-top:4px;}
   .cao-banner{
-    background:var(--teal);color:var(--parchment);border-radius:14px;padding:20px 24px;
-    display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap;
+    background:var(--teal);color:var(--parchment);border-radius:14px;padding:16px 20px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap;
   }
   .cao-banner a{color:var(--gold);font-weight:600;text-decoration:none;}
-  .disclaimer{font-size:12px;opacity:0.55;margin-top:18px;line-height:1.5;}
+  .disclaimer{font-size:12px;opacity:0.55;margin-top:12px;line-height:1.5;}
 
   /* APS calculator*/
-  .aps-tool{background:#fff;border:1px solid rgba(14,27,51,0.1);border-radius:20px;padding:32px;}
-  @media (max-width:640px){.aps-tool{padding:20px;}}
+  .aps-tool{background:#fff;border:1px solid rgba(14,27,51,0.1);border-radius:20px;padding:22px 24px;position:relative;z-index:1;}
+  @media (max-width:640px){.aps-tool{padding:16px;}}
   .aps-label{display:block;font-family:'Public Sans',sans-serif;font-weight:700;font-size:14px;color:var(--teal);margin-bottom:10px;}
   .aps-select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(14,27,51,0.2);font-family:'Public Sans';font-size:14.5px;background:var(--parchment-dim);margin-bottom:6px;}
   .aps-note{font-size:12.5px;opacity:0.65;line-height:1.5;margin:0;}
-  .aps-step{margin-bottom:26px;}
+  .aps-step{margin-bottom:16px;}
   .subject-row{display:grid;grid-template-columns:1.4fr 0.8fr auto;gap:10px;margin-bottom:10px;align-items:center;}
   @media (max-width:560px){.subject-row{grid-template-columns:1fr;}}
   .subject-row select, .subject-row input{
@@ -156,7 +192,7 @@
   .aps-calc-btn{background:var(--navy);color:var(--gold);border:none;padding:14px 24px;border-radius:10px;font-weight:700;font-size:14.5px;cursor:pointer;width:100%;transition:transform .12s ease, background .15s ease;}
   .aps-calc-btn:hover{background:var(--navy-soft);}
   .aps-calc-btn:active{transform:translateY(1px) scale(0.99);}
-  .aps-result{margin-top:24px;background:var(--navy);color:var(--parchment);border-radius:16px;padding:24px;}
+  .aps-result{margin-top:16px;background:var(--navy);color:var(--parchment);border-radius:16px;padding:20px;}
   .aps-result .score{font-family:'Fraunces',serif;font-size:40px;color:var(--gold);font-weight:600;}
   .aps-result .score span{font-size:16px;font-family:'Public Sans';opacity:0.7;}
   .aps-result .breakdown{margin-top:14px;font-size:13px;font-family:'IBM Plex Mono',monospace;line-height:1.9;opacity:0.85;}
@@ -164,9 +200,9 @@
   .aps-result .estimate-flag{display:inline-block;background:var(--flag);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:11px;padding:3px 10px;border-radius:99px;margin-bottom:12px;}
 
   /* verifying wether a university is acredited or not */
-  .verify-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;}
+  .verify-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
   @media (max-width:820px){.verify-grid{grid-template-columns:1fr;}}
-  .verify-card{background:#fff;border:1px solid rgba(14,27,51,0.1);border-radius:16px;padding:22px;position:relative;overflow:hidden;}
+  .verify-card{background:#fff;border:1px solid rgba(14,27,51,0.1);border-radius:16px;padding:16px 18px;position:relative;overflow:hidden;}
   .verify-card.official{border:1.5px solid var(--gold);background:var(--parchment-dim);}
   .stamp{
     position:absolute;top:14px;right:-22px;width:96px;height:96px;transform:rotate(11deg);
@@ -181,19 +217,27 @@
   .pdf-frame-wrap{margin-top:14px;}
   .pdf-frame{width:100%;height:72vh;min-height:420px;border:1px solid rgba(14,27,51,0.15);border-radius:12px;background:#e9e4d4;}
   .pdf-fallback-note{font-size:12px;opacity:0.6;margin-top:8px;line-height:1.5;}
-  .redflags{background:var(--navy);border-radius:16px;padding:24px 28px;}
-  .redflags ul{margin:0;padding-left:20px;color:var(--parchment);opacity:0.85;}
-  .redflags li{font-size:13.5px;line-height:1.7;margin-bottom:4px;}
 
-  .stat-band{background:var(--navy);color:var(--parchment);padding:56px 0;overflow:hidden;}
-  .stat-band-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:40px;flex-wrap:wrap;}
-  .stat-num{
-    font-family:'Fraunces',serif;font-weight:600;font-size:clamp(64px,11vw,140px);
-    line-height:0.85;color:var(--gold);white-space:nowrap;margin-left:-6px;
+  /* accordion (replaces uniform bullet lists) */
+  .accordion{border-radius:16px;overflow:hidden;border:1px solid rgba(14,27,51,0.12);background:#fff;}
+  .accordion.on-navy{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.15);}
+  .accordion-item{border-bottom:1px solid rgba(14,27,51,0.1);}
+  .accordion.on-navy .accordion-item{border-bottom-color:rgba(255,255,255,0.12);}
+  .accordion-item:last-child{border-bottom:none;}
+  .accordion-trigger{
+    width:100%;text-align:left;background:none;border:none;cursor:pointer;
+    padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;
+    font-family:'Public Sans',sans-serif;font-size:14.5px;font-weight:600;color:inherit;
   }
-  .stat-num span{font-size:0.42em;color:var(--parchment);opacity:0.75;}
-  .stat-line{font-size:15.5px;line-height:1.6;opacity:0.85;max-width:280px;margin:0;}
-  @media (max-width:640px){.stat-band-inner{gap:20px;}}
+  .accordion-trigger .plus{font-family:'IBM Plex Mono',monospace;font-size:16px;color:var(--gold-deep);transition:transform .2s ease;flex-shrink:0;}
+  .accordion.on-navy .accordion-trigger .plus{color:var(--gold);}
+  .accordion-item.open .accordion-trigger .plus{transform:rotate(45deg);}
+  .accordion-panel{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .accordion-item.open .accordion-panel{max-height:240px;}
+  .accordion-panel-inner{padding:0 20px 18px;font-size:13.5px;line-height:1.6;opacity:0.85;}
+
+  .redflags{background:var(--navy);border-radius:16px;padding:12px 8px;}
+  .redflags h3{margin:16px 20px;color:var(--parchment);font-size:18px;}
 
   footer{padding:40px 0;text-align:center;font-size:12.5px;opacity:0.6;}
   footer .admin-link{cursor:pointer;text-decoration:underline;opacity:0.5;}
@@ -201,19 +245,26 @@
   /* chat buubble */
   #chat-toggle{
     position:fixed;bottom:22px;right:22px;z-index:60;
-    width:58px;height:58px;border-radius:50%;background:var(--navy);color:var(--parchment);
-    border:none;cursor:pointer;box-shadow:0 8px 22px rgba(14,27,51,0.35);
-    display:flex;align-items:center;justify-content:center;font-size:24px;
+    width:60px;height:60px;border-radius:50%;background:var(--navy);color:var(--parchment);
+    border:2px solid var(--gold);cursor:pointer;box-shadow:0 8px 22px rgba(14,27,51,0.35);
+    display:flex;align-items:center;justify-content:center;font-size:0;
+    padding:0;overflow:hidden;
   }
+  #chat-toggle svg{width:100%;height:100%;}
   #chat-panel{
     position:fixed;bottom:92px;right:22px;z-index:60;width:min(340px,92vw);
     background:#fff;border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,0.25);
     display:none;flex-direction:column;overflow:hidden;border:1px solid rgba(14,27,51,0.1);
   }
   #chat-panel.open{display:flex;}
-  .chat-head{background:var(--navy);color:var(--parchment);padding:14px 16px;font-weight:600;font-size:14px;display:flex;justify-content:space-between;align-items:center;}
-  .chat-head .sub{font-weight:400;font-size:11.5px;opacity:0.7;font-family:'IBM Plex Mono',monospace;}
+  .chat-head{background:var(--navy);color:var(--parchment);padding:14px 16px;display:flex;gap:10px;align-items:center;}
+  .chat-head-avatar{width:38px;height:38px;border-radius:50%;flex-shrink:0;overflow:hidden;border:1.5px solid var(--gold);}
+  .chat-head-avatar svg{width:100%;height:100%;}
+  .chat-head-text{flex:1;font-weight:600;font-size:14px;}
+  .chat-head .sub{font-weight:400;font-size:11.5px;opacity:0.7;font-family:'Public Sans',sans-serif;}
+  .chat-head-close{background:none;border:none;color:inherit;font-size:18px;cursor:pointer;align-self:flex-start;}
   .chat-setup{padding:16px;display:flex;flex-direction:column;gap:10px;}
+  .chat-setup .greet{font-size:13.5px;line-height:1.5;opacity:0.85;margin:0 0 4px;}
   .chat-setup input{padding:10px 12px;border-radius:8px;border:1px solid #ddd;font-size:13px;font-family:'Public Sans';}
   .chat-setup button{background:var(--gold);color:var(--navy);border:none;padding:10px;border-radius:8px;font-weight:700;cursor:pointer;font-size:13px;}
   .chat-body{flex:1;max-height:320px;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;background:var(--parchment);}
@@ -258,7 +309,10 @@
 <nav>
   <div class="wrap">
     <div class="logo"> UniUnlocked </div>
-    <ul>
+    <button id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="nav-links">
       <li><a class="navlink" href="#self">Self-Apply</a></li>
       <li><a class="navlink" href="#study">What to Study</a></li>
       <li><a class="navlink" href="#aps">Calculate my APS</a></li>
@@ -280,24 +334,27 @@
     <circle cx="100" cy="128" r="10" fill="var(--navy)"/>
     <path d="M100 138v18" stroke="var(--navy)" stroke-width="6" stroke-linecap="round"/>
   </svg>
+  <div class="blob blob-gold" style="width:420px;height:420px;top:-120px;left:-140px;"></div>
   <div class="wrap">
-    <span class="eyebrow">A free guide for South African matriculants</span>
-    <h1 class="display">Apply to university,stress free</h1>
-    <p class="hero-sub">Get direct links to every SA university's or college's official application portal, a calculator that scores your matric marks the way each university actually does, and a way to check a private college is legally registered.</p>
-
-    <div class="fork">
-      <div class="fork-line"><span class="dot"></span><span>start here</span><span class="line"></span></div>
-      <div class="routes">
-        <a href="#self" class="route-card self">
-          <h3>Browse universities</h3>
-          <p>Direct, official links to every South African public university, plus well-known private institutions. Free, always.</p>
-          <span class="cta">See the directory</span>
-        </a>
-        <a href="#aps" class="route-card self">
-          <h3>Calculate my APS</h3>
-          <p>Every university scores your matric marks differently. Pick yours and get an honest estimate, not a generic guess.</p>
-          <span class="cta">Calculate my score</span>
-        </a>
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <h1 class="display">Apply to university,stress free</h1>
+        <p class="hero-sub">Get direct links to every SA university's or college's official application portal, a calculator that scores your matric marks the way each university actually does, and a way to check a private college is legally registered.</p>
+      </div>
+      <div class="fork">
+        <div class="fork-line"><span class="dot"></span><span>start here</span><span class="line"></span></div>
+        <div class="routes">
+          <a href="#self" class="route-card self">
+            <h3>Browse universities</h3>
+            <p>Direct, official links to every South African public university, plus well-known private institutions. Free, always.</p>
+            <span class="cta">See the directory</span>
+          </a>
+          <a href="#aps" class="route-card self">
+            <h3>Calculate my APS</h3>
+            <p>Every university scores your matric marks differently. Pick yours and get an honest estimate, not a generic guess.</p>
+            <span class="cta">Calculate my score</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -306,7 +363,6 @@
 <section id="self">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Self Apply</span>
       <h2>Apply directly, no middleman.</h2>
       <p>Official application portals for South Africa's public universities.</p>
     </div>
@@ -314,15 +370,14 @@
     <div class="uni-grid" id="uni-grid"></div>
     <p class="disclaimer">Links go to each university's own website. Application fees, closing dates and course availability are set by the institutions and change often, you should always confirm on the official page before paying anything.</p>
 
-    <div class="section-head" style="margin-top:52px;">
-      <span class="eyebrow">Private institutions</span>
+    <div class="section-head" style="margin-top:32px;">
       <h2 style="font-size:26px;">Studying privately? Check registration first.</h2>
       <p>These are among South Africa's better-known private higher education providers. Before you pay any application fee anywhere private, confirm the institution on the <a href="#verify" style="color:var(--teal);font-weight:600;">Verify a University</a> tab below — private higher education has real, legitimate players and a lot of scams wearing the same "campus" language.</p>
     </div>
     <div class="uni-grid" id="private-grid"></div>
     <p class="disclaimer">This is not an endorsement, it's a starting list of well-known schools. Registration status can change, and a well-known name is not proof of registration. Always check the DHET register yourself.</p>
 
-    <div class="cao-banner" style="margin-top:24px;">
+    <div class="cao-banner" style="margin-top:14px;">
       <div>
         <strong>Looking into TVET colleges?</strong> Practical, hands-on training, a real alternative to university, not a backup. See what TVET is, how it works, and all 50 public colleges by province.
       </div>
@@ -331,10 +386,9 @@
   </div>
 </section>
 
-<section id="study">
+<section id="study" style="padding-top:10px;">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Start here</span>
       <h2>What do you want to study?</h2>
       <p>Pick a field, and see which South African universities offer it. This is a starting point, not a full course catalogue, always confirm the exact programme name and requirements on the university's own site.</p>
     </div>
@@ -348,19 +402,12 @@
   </div>
 </section>
 
-<section class="stat-band">
-  <div class="stat-band-inner">
-    <div class="stat-num">26<span>+145</span></div>
-    <p class="stat-line">26 public universities. Roughly 145 registered private institutions.<br>One place to check which is which before you pay anyone.</p>
-  </div>
-</section>
-
-<section id="aps">
+<section id="aps" style="padding-top:10px;">
+  <div class="blob blob-teal" style="width:520px;height:420px;top:10%;right:-180px;"></div>
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Free tool</span>
       <h2>Calculate my APS score.</h2>
-      <p>Every South African university scores your matric marks differently, the same results can be 33/42 at one university and 430/600 at another. Pick your university, enter your marks, and get that university's own version of your score.</p>
+      <p>There are 26 public universities in South Africa, and every one of them scores your matric marks differently — the same results can land you a 33 out of 42 at one, and a 430 out of 600 at another. Pick your university, enter your marks, and get that university's own version of your score.</p>
     </div>
 
     <div class="aps-tool">
@@ -387,10 +434,9 @@
   </div>
 </section>
 
-<section id="prospectus">
+<section id="prospectus" style="padding-top:20px;">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Read before you apply</span>
       <h2>See a university's prospectus.</h2>
       <p>Where I've verified a direct, current link, it goes straight to the PDF or prospectus page. For the rest, it goes to the university's admissions page so you can find it yourself. Prospectus links move around every intake, so this list needs a quick check each year.</p>
     </div>
@@ -405,11 +451,11 @@
 </section>
 
 <section id="verify" class="tint">
+  <div class="blob blob-flag" style="width:460px;height:400px;bottom:-100px;left:-160px;"></div>
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Before you pay anyone</span>
       <h2>Is this university actually registered?</h2>
-      <p>South Africa has 26 public universities, all legitimate by default plus roughly 145 registered private higher education institutions. Everything else operating as a "university" or "college" outside those lists is illegal, and a qualification from one has no standing.</p>
+      <p>Between the 26 public universities, which are legitimate by default, and roughly 145 registered private higher education institutions, that's the full, legal picture — anything calling itself a "university" or "college" outside those lists is operating illegally, and a qualification from one has no standing.</p>
     </div>
 
     <div class="verify-grid">
@@ -441,14 +487,8 @@
     </div>
 
     <div class="redflags">
-      <h3 style="margin-top:0;color:var(--parchment);font-size:18px;">Signs a "university" or college isn't legitimate</h3>
-      <ul>
-        <li>It can't show you a current DHET registration certificate, or the registration number doesn't match the official register.</li>
-        <li>It pressures you to pay registration or "seat reservation" fees before you've verified anything.</li>
-        <li>It can't give you a SAQA ID for the specific qualification you'd be studying.</li>
-        <li>Its name closely mimics a real, well-known university or college with a slightly different spelling.</li>
-        <li>All communication happens over WhatsApp or private email, with no verifiable physical campus.</li>
-      </ul>
+      <h3>Signs a "university" or college isn't legitimate</h3>
+      <div class="accordion on-navy" id="redflags-accordion"></div>
     </div>
     <p class="disclaimer">This page links to official government and SAQA sources rather than listing institutions ourselves, registration status changes often, and the official register is always the accurate, current source. Always verify directly before enrolling or paying.</p>
   </div>
@@ -457,30 +497,15 @@
 <section id="nsfas" class="tint">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Funding</span>
       <h2>What is NSFAS?</h2>
       <p>The National Student Financial Aid Scheme is the South African government's main funding scheme for students who can't afford university or TVET college on their own. If money is the thing standing between you and studying, this is where to start.</p>
     </div>
 
-    <div class="verify-grid">
-      <div class="verify-card official">
-        <div class="verify-tag">Who qualifies</div>
-        <h3>The income threshold</h3>
-        <p>NSFAS funds South African citizens and permanent residents with a combined household income of R350,000 or less a year rising to R600,000 for students living with a disability. SASSA grant recipients qualify automatically without a separate income check.</p>
-      </div>
-      <div class="verify-card">
-        <div class="verify-tag">What it covers</div>
-        <h3>Tuition and living costs</h3>
-        <p>Full tuition, plus allowances for accommodation, transport, meals, and books paid directly to your bank account. It applies equally to public universities and public TVET colleges.</p>
-      </div>
-      <div class="verify-card">
-        <div class="verify-tag">Good to know</div>
-        <h3>Timing and staying funded</h3>
-        <p>Applications typically open around September for the following academic year and close in January, apply as early as you can, since documents (certified ID copies, proof of income) are the most common cause of delays. Funding covers your minimum study duration plus two extra years, so passing your subjects matters for staying funded.</p>
-      </div>
+    <div class="aps-tool" style="padding:8px;">
+      <div class="accordion" id="nsfas-accordion"></div>
     </div>
 
-    <div class="cao-banner" style="background:var(--navy);">
+    <div class="cao-banner" style="background:var(--navy);margin-top:14px;">
       <div>
         <strong>Apply directly through NSFAS</strong> — this isn't something any third party, including this site, can apply on your behalf for.
       </div>
@@ -493,8 +518,7 @@
 
 <section id="about" class="tint">
   <div class="wrap" style="max-width:680px;">
-    <span class="eyebrow">Why this exists</span>
-  
+    <h2 style="font-size:26px;margin:0 0 14px;">Why this exists</h2>
     <p style="font-size:15.5px;line-height:1.65;opacity:0.85;">
       Boitumelo Mollo: "My dad was the one who came up with the idea for this site. 
       He's a professor, and he saw how many learners were struggling to figure out where to apply, 
@@ -508,7 +532,6 @@
 <section id="contact">
   <div class="wrap" style="text-align:center;">
     <div class="section-head" style="margin:0 auto;">
-      <span class="eyebrow">Questions?</span>
       <h2>Use the chat bubble, bottom right.</h2>
       <p>Ask me anything about a course, a deadline, or which route makes sense for you.</p>
     </div>
@@ -521,13 +544,27 @@
   </div>
 </footer>
 
-<button id="chat-toggle">💬</button>
+<button id="chat-toggle" aria-label="Chat with Boitumelo">
+  <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="60" height="60" fill="#0E1B33"/>
+    <circle cx="30" cy="23" r="11" fill="#C9973E"/>
+    <path d="M10 54c2-13 10-19 20-19s18 6 20 19" fill="#C9973E"/>
+  </svg>
+</button>
 <div id="chat-panel">
   <div class="chat-head">
-    <div>Chat with Boitumelo<div class="sub" id="chat-status">usually replies same day</div></div>
-    <button id="chat-close" style="background:none;border:none;color:inherit;font-size:18px;cursor:pointer;">×</button>
+    <div class="chat-head-avatar">
+      <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="60" height="60" fill="#182B4D"/>
+        <circle cx="30" cy="23" r="11" fill="#C9973E"/>
+        <path d="M10 54c2-13 10-19 20-19s18 6 20 19" fill="#C9973E"/>
+      </svg>
+    </div>
+    <div class="chat-head-text">Boitumelo<div class="sub" id="chat-status">usually replies same day</div></div>
+    <button id="chat-close" class="chat-head-close">×</button>
   </div>
   <div id="chat-setup" class="chat-setup">
+    <p class="greet">Hey, I'm Boitumelo 👋 I built this site with my dad. Drop your name and a way to reach you, and I'll get back to you personally.</p>
     <input type="text" id="chat-name" placeholder="Your name">
     <input type="text" id="chat-phone" placeholder="WhatsApp number or email">
     <button id="chat-start">Start chat</button>
@@ -915,6 +952,64 @@ document.getElementById('aps-calculate').onclick = ()=>{
   resultEl.scrollIntoView({behavior:'smooth', block:'center'});
 };
 
+/* ---------- Accordions (replace uniform bullet lists) ---------- */
+function buildAccordion(containerId, items){
+  const container = document.getElementById(containerId);
+  if(!container) return;
+  container.innerHTML = items.map((it, i)=>`
+    <div class="accordion-item" data-idx="${i}">
+      <button type="button" class="accordion-trigger">
+        <span>${it.q}</span>
+        <span class="plus">+</span>
+      </button>
+      <div class="accordion-panel"><div class="accordion-panel-inner">${it.a}</div></div>
+    </div>`).join('');
+  container.querySelectorAll('.accordion-item').forEach(item=>{
+    item.querySelector('.accordion-trigger').addEventListener('click', ()=>{
+      const wasOpen = item.classList.contains('open');
+      container.querySelectorAll('.accordion-item.open').forEach(o=>o.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+}
+
+buildAccordion('redflags-accordion', [
+  {q:"No current DHET registration certificate", a:"It can't show you a current DHET registration certificate, or the registration number doesn't match the official register."},
+  {q:"Pressure to pay before you've checked anything", a:"It pressures you to pay registration or \u201cseat reservation\u201d fees before you've verified anything."},
+  {q:"No SAQA ID for the qualification", a:"It can't give you a SAQA ID for the specific qualification you'd be studying."},
+  {q:"A name that mimics a real institution", a:"Its name closely mimics a real, well-known university or college with a slightly different spelling."},
+  {q:"No verifiable physical campus", a:"All communication happens over WhatsApp or private email, with no verifiable physical campus."}
+]);
+
+buildAccordion('nsfas-accordion', [
+  {q:"Who qualifies — the income threshold", a:"NSFAS funds South African citizens and permanent residents with a combined household income of R350,000 or less a year, rising to R600,000 for students living with a disability. SASSA grant recipients qualify automatically without a separate income check."},
+  {q:"What it covers — tuition and living costs", a:"Full tuition, plus allowances for accommodation, transport, meals, and books paid directly to your bank account. It applies equally to public universities and public TVET colleges."},
+  {q:"Timing and staying funded", a:"Applications typically open around September for the following academic year and close in January, apply as early as you can, since documents (certified ID copies, proof of income) are the most common cause of delays. Funding covers your minimum study duration plus two extra years, so passing your subjects matters for staying funded."}
+]);
+
+window.addEventListener('scroll', ()=>{
+  const bar = document.getElementById('scroll-progress');
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  bar.style.width = scrolled + '%';
+});
+
+/* Hamburger nav — collapses the link list so it never collides with the logo */
+const navToggle = document.getElementById('nav-toggle');
+const navLinks = document.getElementById('nav-links');
+function closeNav(){
+  navLinks.classList.remove('open');
+  navToggle.classList.remove('open');
+  navToggle.setAttribute('aria-expanded','false');
+}
+navToggle.addEventListener('click', ()=>{
+  const isOpen = navLinks.classList.toggle('open');
+  navToggle.classList.toggle('open', isOpen);
+  navToggle.setAttribute('aria-expanded', String(isOpen));
+});
+navLinks.querySelectorAll('a').forEach(a=> a.addEventListener('click', closeNav));
+window.addEventListener('resize', ()=>{ if(window.innerWidth > 980) closeNav(); });
+
 /* ---------- Helpers ---------- */
 function slug(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
 function fmtTime(ts){ if(!ts) return ''; const d = ts.toDate ? ts.toDate() : new Date(ts); return d.toLocaleDateString('en-ZA',{month:'short',day:'numeric'})+' '+d.toLocaleTimeString('en-ZA',{hour:'2-digit',minute:'2-digit'}); }
@@ -1094,13 +1189,6 @@ async function openAdminChat(id){
     }
   };
 }
-
-window.addEventListener('scroll', ()=>{
-  const bar = document.getElementById('scroll-progress');
-  const h = document.documentElement;
-  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
-  bar.style.width = scrolled + '%';
-});
 
 async function loadAdminRequests(){
   const container = document.getElementById('admin-requests');
